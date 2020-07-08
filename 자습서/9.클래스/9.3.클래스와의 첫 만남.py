@@ -22,5 +22,5 @@ class MyClass:
 x = MyClass()  # 인스턴스
 
 
-def __init__(self):
+def __init__(self):    #self는 자바의 this
     self.data = []
