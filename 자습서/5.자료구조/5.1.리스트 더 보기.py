@@ -1,4 +1,6 @@
 # 5.1. 리스트 더 보기
+from mpmath import matrix
+
 list = [1, 2, 3, 4]
 print(list)
 
@@ -49,3 +51,10 @@ print(squares)  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 
 squares2 = [x**2 for x in range(10)]
 print(squares2)
+
+# 5.1.4. 중첩된 리스트 컴프리헨션
+temps = []
+for i in range(4):
+    temps.append([row[i] for row in matrix])
+
+print(temps)
