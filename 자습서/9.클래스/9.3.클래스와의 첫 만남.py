@@ -19,8 +19,39 @@ class MyClass:
         return 'hello world'
 
 
-x = MyClass()  # 인스턴스
+# 9.3.3. 인스턴스 객체
+
+x = MyClass()  # 인스턴스화
 
 
-def __init__(self):    #self는 자바의 this
+def __init__(self):  # self는 자바의 this
     self.data = []
+
+
+x = MyClass()
+
+# 9.3.4. 메세드 객체
+
+x.f()
+xf = x.f
+# while True:
+#    print(xf())  # 끊임없이 출력
+
+
+# 9.3.5. 클래스와 인스턴스 변수
+
+class Dog:
+
+    kind = 'canine'     # kind 객체, 모든 인스턴스에 공유가능
+
+    def __init__(self, name):
+        self.name = name  # 각각의 인스턴스
+
+
+d = Dog('Fido')
+e = Dog('Buddy')
+
+print(d.kind)
+print(e.kind)
+print(d.name)
+print(e.name)
