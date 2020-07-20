@@ -117,3 +117,83 @@ print(l)
 # [0 1 2 3 4 5]
 r = l.reshape(3, 2)
 print(r)
+# [[0 1]
+#  [2 3]
+#  [4 5]]
+# 3행 2열
+# 출력할때 array가 출력될때랑 안될떄가 있는데 그차이?
+a = np.arange(6)
+np.reshape(a, newshape=(1, 6), order='C')
+# newshape당신이 원하는 새로운 모양입니다.
+# 정수 또는 튜플 정수를 지정할 수 있습니다.
+# 정수를 지정하면 결과는 해당 길이의 배열이됩니다. 모양은 원래 모양과 호환되어야함
+np.reshape(a, newshape=(2, 3), order='F')
+# array([[0, 2, 4],
+#        [1, 3, 5]])
+# C , Fortran의 차이는 ?
+# https://numpy.org/doc/stable/reference/internals.html#numpy-internals
+# 참고하기
+
+
+## 1D 배열을 2D 배열로 변환하는 방법 (배열에 새 축을 추가하는 방법)
+a = np.array([1, 2, 3, 4, 5, 6])
+a.shape
+# (6,)
+a2 = a[np.newaxis, :]  # 새 축 추가
+a2.shape
+# (1, 6)
+col_vector = a[:, np.newaxis]
+col_vector.shape
+# (6, 1)
+b = np.expand_dims(a, axis=1)  # 인덱스 위치에 새축 추가
+# array([[1],
+#        [2],
+#        [3],
+#        [4],
+#        [5],
+#        [6]])
+# (6, 1)
+c = np.expand_dims(a, axis=0)
+# (1, 6)
+
+## 인덱싱과 슬라이싱
+
+data = np.array([1,2,3])
+data
+# array([1, 2, 3])
+data[1]
+# 2
+data[0:2]
+# array([1,2])
+
+p = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+print(p[p<5])
+# [1,2,3,4]
+five_up = (p >= 5)
+print(p[five_up])
+# [ 5  6  7  8  9 10 11 12]
+divisible_by_2 = p [p%2 == 0]
+divisible_by_2
+# array([ 2,  4,  6,  8, 10, 12])
+five_up = (p > 5) | (p == 5)
+print(five_up)
+five_up
+# [[False False False False]
+#  [ True  True  True  True]
+#  [ True  True  True True]]
+
+a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+b = np.nonzero(a < 5)
+print(b)
+# (array([0, 0, 0, 0], dtype=int64), array([0, 1, 2, 3], dtype=int64))
+
+list_of_coordinates= list(zip(b[0], b[1]))
+
+for coord in list_of_coordinates:
+    print(coord)
+# (0, 0)
+# (0, 1)
+# (0, 2)
+# (0, 3)
+
+
